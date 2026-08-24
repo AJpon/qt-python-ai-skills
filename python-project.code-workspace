@@ -1,0 +1,224 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "evenBetterToml.taplo.configFile.path": ".taplo.toml",
+        "flake8.enabled": true,
+        "flake8.importStrategy": "fromEnvironment",
+        "flake8.interpreter": [
+            "uvx",
+            "python"
+        ],
+        "flake8.path": [
+            "pflake8"
+        ],
+        "mypy-type-checker.importStrategy": "fromEnvironment",
+        "mypy-type-checker.interpreter": [
+            "uvx",
+            "python"
+        ],
+        "mypy-type-checker.preferDaemon": true,
+        "mypy-type-checker.reportingScope": "workspace",
+        "pylint.enabled": true,
+        "pylint.importStrategy": "fromEnvironment",
+        "pylint.interpreter": [
+            "uvx",
+            "python"
+        ],
+        "python.analysis.exclude": [
+            "**/build",
+            "**/dist",
+            "**/node_modules",
+            "**/__pycache__",
+            ".git"
+        ],
+        "python.analysis.extraPaths": [],
+        "python.analysis.include": [
+            "src/**.py",
+            "scripts/**.py",
+            "tests/**.py",
+            "typings/**.pyi",
+        ],
+        "python.analysis.includeAliasesFromUserFiles": true,
+        "python.analysis.stubPath": "typings",
+        "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
+        "python.autoComplete.extraPaths": [],
+        "python.terminal.activateEnvInCurrentTerminal": true,
+        "python.testing.pytestEnabled": true,
+        "python.analysis.enablePytestSupport": true,
+        "python.terminal.shellIntegration.enabled": true,
+        "python.testing.autoTestDiscoverOnSaveEnabled": true,
+        "ruff.format.backend": "uv",
+        "ruff.importStrategy": "useBundled",
+        "ty.diagnosticMode": "workspace",
+        "ty.importStrategy": "useBundled",
+        "yaml.completion": true,
+        "yaml.format.enable": true,
+        "yaml.hover": true,
+        "yaml.schemas": {
+            "https://mermaid.js.org/schemas/config.schema.json": [
+                "mermaid-config.yaml",
+                "*.mermaid",
+                "*.mmd"
+            ]
+        },
+        "yaml.validate": true,
+        "[python]": {
+            "editor.defaultFormatter": "charliermarsh.ruff",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.fixAll.ruff": "explicit",
+                "source.organizeImports.ruff": "explicit"
+            }
+        },
+        "[toml]": {
+            "editor.defaultFormatter": "tamasfe.even-better-toml"
+        },
+        "[yaml]": {
+            "editor.insertSpaces": true,
+            "editor.autoIndent": "keep",
+            "diffEditor.ignoreTrimWhitespace": false,
+            "editor.quickSuggestions": {
+                "comments": false,
+                "other": true,
+                "strings": true
+            },
+            "editor.defaultFormatter": "redhat.vscode-yaml",
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "aaron-bond.better-comments",
+            "astral-sh.ty",
+            "charliermarsh.ruff",
+            "editorconfig.editorconfig",
+            "ms-python.debugpy",
+            "ms-python.flake8",
+            "ms-python.pylint",
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-python.vscode-python-envs",
+            "redhat.vscode-yaml",
+            "streetsidesoftware.code-spell-checker",
+            "streetsidesoftware.code-spell-checker-cspell-bundled-dictionaries",
+            "streetsidesoftware.code-spell-checker-win32",
+            "tamasfe.even-better-toml",
+        ],
+        "unwantedRecommendations": [
+            "ms-pyright.pyright",
+            "ms-python.mypy-type-checker"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "inputs": [],
+        "configurations": [],
+        "compounds": [],
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "inputs": [],
+        "tasks": [
+            {
+                "label": "Sync dependencies",
+                "command": "uv",
+                "type": "process",
+                "args": [
+                    "sync"
+                ],
+                "presentation": {
+                    "group": "uv",
+                    "reveal": "always"
+                },
+                "icon": {
+                    "id": "symbol-constructor",
+                },
+            },
+            {
+                "label": "Build project",
+                "command": "uv",
+                "type": "process",
+                "args": [
+                    "build"
+                ],
+                "presentation": {
+                    "group": "uv",
+                    "reveal": "always"
+                },
+                "dependsOn": "Sync dependencies",
+                "group": "build",
+                "icon": {
+                    "id": "rocket",
+                    "color": "terminal.ansiGreen",
+                },
+            },
+            {
+                "label": "pre-commit install",
+                "command": "uv",
+                "type": "process",
+                "args": [
+                    "run",
+                    "pre-commit",
+                    "install"
+                ],
+                "presentation": {
+                    "group": "pre-commit",
+                    "reveal": "always"
+                },
+                "dependsOn": [
+                    "Sync dependencies"
+                ],
+                "icon": {
+                    "id": "symbol-constructor"
+                },
+                "hide": true
+            },
+            {
+                "label": "pre-commit run --all-files",
+                "command": "uv",
+                "type": "process",
+                "args": [
+                    "run",
+                    "pre-commit",
+                    "run",
+                    "--all",
+                ],
+                "presentation": {
+                    "group": "pre-commit",
+                    "reveal": "always"
+                },
+                "dependsOn": [
+                    "pre-commit install"
+                ],
+                "icon": {
+                    "id": "microscope",
+                    "color": "terminal.ansiCyan"
+                },
+            },
+            {
+                "label": "Setup Workspace",
+                "dependsOn": [
+                    "Sync dependencies",
+                    "pre-commit install"
+                ],
+                "isBackground": true,
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "new",
+                    "showReuseMessage": false,
+                    "clear": false,
+                    "close": true,
+                },
+                "hide": true,
+                "runOptions": {
+                    "runOn": "folderOpen"
+                }
+            },
+        ]
+    }
+}

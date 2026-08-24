@@ -1,0 +1,39 @@
+#:schema https://www.schemastore.org/taplo.json
+# ///
+# Configuration file for the VSCode `Even Better TOML` extension
+# For details about the extension, see the following links:
+# - Even Better TOML - Visual Studio Marketplace
+#   https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml
+#
+# For more information about the configuration options, see:
+# - Configuration File | Taplo
+#   https://taplo.tamasfe.dev/configuration/file.html
+#
+# ///
+
+
+#? MARK:- Global
+# exclude = ["pylock.toml"]
+[formatting]
+max_width = 80
+allowed_blank_lines = 2
+
+array_trailing_comma = true
+array_auto_collapse = false
+array_auto_expand = true
+reorder_arrays = false
+
+compact_entries = false
+compact_arrays = true
+compact_inline_tables = true
+
+inline_table_expand = true
+
+#? MARK:- Rules
+[[rule]]
+[rule.formatting]
+include = ["pyproject.toml"]
+
+[rule.schema]
+# url = "https://www.schemastore.org/pyproject.json"
+enabled = false

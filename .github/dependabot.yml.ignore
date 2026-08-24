@@ -1,0 +1,13 @@
+version: 2
+updates:
+- package-ecosystem: uv
+  directory: "/"
+  schedule:
+    interval: semiannually
+    timezone: Asia/Tokyo
+  open-pull-requests-limit: 4
+  allow:
+  - dependency-type: direct
+  - dependency-type: indirect
+  commit-message:
+    prefix: "fix: "

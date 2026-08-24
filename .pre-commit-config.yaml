@@ -1,0 +1,67 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+default_language_version:
+  python: python3.13
+
+exclude: "\
+  .*pyi$|\
+  .vscode\/.*json$|\
+  .*code-workspace$|\
+  .*(txt|log|git.*)$|\
+  (README|LICEN[SC]E)(\\..+)?$\
+  "
+
+ci:
+  autoupdate_commit_msg: "chore: update pre-commit hooks"
+  autofix_commit_msg: "style: pre-commit fixes"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.12.3
+    hooks:
+      - id: uv-sync
+        args: [ --all-extras ]
+        stages: [pre-commit, post-checkout, post-merge]
+        # additional_dependencies: [keyring]
+      - id: uv-lock
+      # - id: uv-export
+      #   name: uv-export requirements.txt
+      #   args: [-o, requirements.txt]
+      # - id: uv-export
+      #   name: uv-export requirements-dev.txt
+      #   args: [--only-dev, -o, requirements-dev.txt]
+      # - id: uv-export
+      #   name: uv-export pylock.toml
+      #   args: [-o, pylock.toml]
+
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v10.0.1
+    hooks:
+      - id: cspell
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.3.0
+    hooks:
+      - id: flake8
+        entry: uv run --active pflake8
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.2
+    hooks:
+      - id: ruff-check
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format

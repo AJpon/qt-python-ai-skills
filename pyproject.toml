@@ -1,0 +1,145 @@
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
+
+# MARK: - Project
+[project]
+name = "python-uv-project-template"
+version = "0.1.0"
+authors = [{name = "Takahiro Ono"}]
+maintainers = []
+description = "Add your description here"
+readme = "README.md"
+license-files = ["LICEN[CS]E"]
+classifiers = [
+    "Private :: Do Not Upload",
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.11, <3.15"
+dependencies = []
+
+# [project.urls]
+# Documentation = "https://github.com"
+# Issues = "https://github.com"
+# Source = "https://github.com"
+
+# [project.entry-points."SAMPLE_ENTRY_POINT_GROUP"]
+# Add your entry points here.
+
+# [project.scripts]
+# Add your scripts here.
+
+# [project.gui-scripts]
+# Add your gui scripts here. (Windows only)
+
+[tool.uv]
+required-version = ">=0.12.0,<0.13.0"
+environments = []
+
+[tool.uv.workspace]
+members = [
+    "packages/*",
+    "scripts/*",
+    "tools/*",
+]
+
+[tool.uv.sources]
+
+[tool.uv.dependency-groups]
+dev = {requires-python = ">=3.14"}
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.1",
+    "taskipy>=1.14.1",
+    {include-group = "lint"},
+    {include-group = "test"},
+]
+lint = [
+    "flake8-class-attributes-order>=0.3.0",
+    "pyproject-flake8>=7.0.0",
+    "ruff>=0.15.11",
+]
+test = [
+    "pytest>=9.1.1",
+]
+
+# MARK: - Build
+[tool.uv.build-backend]
+module-root = "src"
+module-name = ["python_package"]
+# source-include = []
+# source-exclude = []
+# wheel-exclude = []
+
+# [tool.uv.build-backend.data]
+# headers = "include/headers"
+# scripts = "bin"
+# data = "share"
+
+# MARK: - Tool Settings
+[tool.ruff]
+extend-exclude = []
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+extend-select = [
+    "I",   # isort
+    "DOC", # pydoclint
+    "D",   # pydocstyle
+    "PLE", # Pylint Errors
+    "UP",  # pyupgrade
+]
+ignore = [
+    "D106", # Magic method docstring is missing
+    "D403", # First word in docstring should be capitalized (Ignore for non-English)
+    "D415", # First line should end with a period (Ignore for non-English)
+]
+unfixable = ["D"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+
+[tool.flake8]
+# https://github.com/best-doctor/flake8-class-attributes-order
+select = "CCE"
+class_attributes_order = [
+    "constant",
+    "field",
+    "outer_field",
+    "protected field",
+    "private field",
+    "property_method",
+    "protected_property_method",
+    "private_property_method",
+    "__new__",
+    "__init__",
+    "__post_init__",
+    "magic_method",
+    "static_method",
+    "class_method",
+    "method",
+    "protected_static_method",
+    "protected_class_method",
+    "protected_method",
+    "private_static_method",
+    "private_class_method",
+    "private_method",
+    "nested_class",
+]

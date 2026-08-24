@@ -1,0 +1,8 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+[*.json]
+indent_style = space
+end_of_line = lf
+indent_size = 2
+tab_width = 2
+trim_trailing_whitespace = false
