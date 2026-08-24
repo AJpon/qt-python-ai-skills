@@ -11,10 +11,14 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.{sh,bash}]
+indent_style = space
+indent_size = 2
+
 [*.{yml,yaml}]
 indent_style = space
 indent_size = 2
 
 [*.{json,jsonc,code-workspace}]
 indent_style = space
-indent_size = 4
+indent_size = 2
