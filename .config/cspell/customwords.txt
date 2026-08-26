@@ -1,3 +1,5 @@
 # cspell-tools: no-keep-case no-split
 ajpon
 Takahiro
+libavformat
+libx

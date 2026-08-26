@@ -1,0 +1,18 @@
+{
+  "name": "qt-python-ui-testing",
+  "version": "0.1.0",
+  "description": "Reviewing or automating GUI tests for a `Qt for Python` application. Simulate real mouse/keyboard interaction and capture what actually rendered (screenshots), instead of only instantiating a widget and asserting its properties.",
+  "author": {
+    "name": "AJpon",
+    "url": "https://github.com/AJpon"
+  },
+  "homepage": "https://github.com/AJpon/qt-python-ai-skills/tree/main/plugins/qt-python-ui-testing",
+  "repository": "https://github.com/AJpon/qt-python-ai-skills",
+  "keywords": [
+    "Qt",
+    "Qt for Python",
+    "GUI testing",
+    "claude-code",
+    "copilot-cli"
+  ]
+}

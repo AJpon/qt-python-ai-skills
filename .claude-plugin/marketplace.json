@@ -1,0 +1,28 @@
+{
+  "name": "ajpon-qt-python-plugins",
+  "owner": {
+    "name": "AJpon"
+  },
+  "metadata": {
+    "description": "Qt Python plugins for Claude Code and GitHub Copilot.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "git-command",
+      "source": "./plugins/git-command",
+      "description": "Git command plugin for Claude Code and GitHub Copilot."
+    },
+    {
+      "name": "qt-development-skills",
+      "description": "Agentic engineering skills for Qt software development, including Qt C++/QML code review, QML coding, and Qt C++/QML code documentation. Bundles the hosted Qt Documentation MCP server for live Qt API lookups. These skills use AI and can make mistakes. Always double-check the output carefully.",
+      "author": {
+        "name": "Qt Group"
+      },
+      "source": {
+        "source": "url",
+        "url": "https://github.com/TheQtCompanyRnD/agent-skills.git"
+      }
+    }
+  ]
+}
