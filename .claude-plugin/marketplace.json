@@ -9,9 +9,9 @@
   },
   "plugins": [
     {
-      "name": "git-command",
-      "source": "./plugins/git-command",
-      "description": "Git command plugin for Claude Code and GitHub Copilot."
+      "name": "qt-python-ui-testing",
+      "source": "./plugins/qt-python-ui-testing",
+      "description": "Reviewing or automating GUI tests for a `Qt for Python` application. Simulate real mouse/keyboard interaction and capture what actually rendered (screenshots), instead of only instantiating a widget and asserting its properties."
     },
     {
       "name": "qt-development-skills",

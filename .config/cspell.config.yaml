@@ -31,3 +31,4 @@ ignorePaths:
   - .pre-commit-config.yaml
   - "*.code-workspace"
   - "*.ui"
+  - "*.svg"
